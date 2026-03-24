@@ -396,12 +396,15 @@ if (contactForm && formStatus) {
 
     const formData = new FormData(contactForm);
     const payload = Object.fromEntries(formData.entries());
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
 
     try {
       const response = await fetch(safeApi("/api/contact"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
+        signal: controller.signal,
       });
 
       const data = await response.json();
@@ -411,8 +414,13 @@ if (contactForm && formStatus) {
       formStatus.style.color = "var(--accent)";
       contactForm.reset();
     } catch (error) {
-      formStatus.textContent = error.message;
+      formStatus.textContent =
+        error.name === "AbortError"
+          ? "Request timed out. Please try again."
+          : error.message || "Unable to send message right now.";
       formStatus.style.color = "#ff6b6b";
+    } finally {
+      clearTimeout(timeout);
     }
   });
 }

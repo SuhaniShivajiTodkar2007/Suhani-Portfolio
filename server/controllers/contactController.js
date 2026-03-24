@@ -1,5 +1,6 @@
 const Message = require("../models/Message");
 const sendEmail = require("../utils/sendEmail");
+const EMAIL_TIMEOUT_MS = 12000;
 
 const createMessage = async (req, res) => {
   const { name, email, message } = req.body;
@@ -14,11 +15,16 @@ const createMessage = async (req, res) => {
   try {
     const savedMessage = await Message.create({ name, email, message });
 
-    const emailResult = await sendEmail({
-      userName: name,
-      userEmail: email,
-      userMessage: message,
-    });
+    const emailResult = await Promise.race([
+      sendEmail({
+        userName: name,
+        userEmail: email,
+        userMessage: message,
+      }),
+      new Promise((resolve) =>
+        setTimeout(() => resolve({ sent: false, reason: "Email timeout" }), EMAIL_TIMEOUT_MS)
+      ),
+    ]);
 
     return res.status(201).json({
       success: true,
