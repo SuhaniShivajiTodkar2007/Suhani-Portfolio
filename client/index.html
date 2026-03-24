@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio of Suhani Shivaji Todkar, BCA student at Christ University, showcasing full stack projects, skills, certifications, and leadership."
+    />
+    <meta
+      name="keywords"
+      content="Suhani Shivaji Todkar, BCA, Christ University, portfolio, web developer, full stack, Firebase, JavaScript"
+    />
+    <meta name="author" content="Suhani Shivaji Todkar" />
+    <meta name="api-base" content="http://localhost:5000" />
+    <title>Suhani Shivaji Todkar | Full Stack Developer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="page-transition" id="page-transition" aria-hidden="true"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <header class="header glass">
+      <div class="container nav-wrap">
+        <a href="#home" class="logo">Suhani<span>.</span></a>
+        <nav class="nav" id="nav">
+          <a href="#home" class="nav-link active">Home</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#certifications" class="nav-link">Certifications</a>
+          <a href="#leadership" class="nav-link">Leadership</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+        <div class="nav-actions">
+          <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">
+            <span id="theme-icon">Dark</span>
+          </button>
+          <button id="menu-toggle" class="icon-btn menu-btn" aria-label="Toggle menu">
+            Menu
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero section scroll-anim fade-up">
+        <div class="container hero-grid">
+          <div class="hero-text reveal">
+            <p class="eyebrow">Computer Science Student | Christ University</p>
+            <h1>Suhani Shivaji Todkar</h1>
+            <p class="hero-tagline">
+              Building responsive web experiences, solving practical problems, and developing real-world
+              applications.
+            </p>
+            <p class="typing-line">
+              <span class="typing-prefix">&lt; role &gt;</span>
+              <span id="typed-role" aria-live="polite"></span>
+              <span class="typing-cursor" aria-hidden="true"></span>
+            </p>
+            <p>
+              BCA student with a strong foundation in programming and software development, focused on
+              creating user-friendly and reliable web solutions.
+            </p>
+            <div class="hero-cta">
+              <a href="#projects" class="btn btn-primary">View Projects</a>
+              <a href="#contact" class="btn btn-secondary">Contact Me</a>
+            </div>
+            <div class="hero-metrics reveal">
+              <article class="metric-card glass">
+                <h3>3+</h3>
+                <p>Major Projects</p>
+              </article>
+              <article class="metric-card glass">
+                <h3>5+</h3>
+                <p>Certifications</p>
+              </article>
+              <article class="metric-card glass">
+                <h3>2</h3>
+                <p>Leadership Roles</p>
+              </article>
+            </div>
+          </div>
+          <div class="hero-photo-wrap reveal">
+            <div class="tech-float-icons" aria-hidden="true">
+              <span class="tech-float html">HTML</span>
+              <span class="tech-float css">CSS</span>
+              <span class="tech-float js">JS</span>
+            </div>
+            <div class="photo-frame glass">
+              <img
+                src="./assets/images/profile.jpg"
+                alt="Profile photo of Suhani Shivaji Todkar"
+                class="profile-photo hero-photo"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section scroll-anim slide-in">
+        <div class="container">
+          <h2 class="section-title reveal">About</h2>
+          <div class="about-layout">
+            <article class="card glass reveal about-main">
+              <p>
+                I am a BCA student at Christ University, Bengaluru, with a strong interest in software
+                engineering and modern web development. Through academics and hands-on projects, I have
+                built a solid foundation in programming, problem solving, and application design.
+              </p>
+              <p>
+                I have practical experience building responsive applications using HTML, CSS, JavaScript,
+                and Firebase. I enjoy translating ideas into clean interfaces and scalable functionality,
+                with a focus on usability, performance, and maintainable code.
+              </p>
+              <p>
+                Beyond coursework, I actively participate in university technical activities that sharpen
+                my collaboration and execution skills. I am continuously learning new technologies and
+                working toward building practical, real-world software solutions as I grow into a
+                professional developer.
+              </p>
+            </article>
+
+            <aside class="about-side reveal">
+              <div class="card glass about-photo-card">
+                <img
+                  src="./assets/images/profile.jpg"
+                  alt="Suhani Shivaji Todkar portrait"
+                  class="profile-photo about-photo-large"
+                />
+              </div>
+
+              <div class="card glass highlights-card">
+                <h3>Quick Facts</h3>
+                <ul class="fact-list">
+                  <li><span class="fact-icon">EDU</span>BCA Student - Christ University</li>
+                  <li><span class="fact-icon">DEV</span>Programming: C, C++, JavaScript</li>
+                  <li><span class="fact-icon">WEB</span>Web Development: HTML, CSS</li>
+                  <li><span class="fact-icon">DB</span>Backend/Database: Firebase, SQL</li>
+                  <li><span class="fact-icon">INT</span>Interests: Web Development, Real-World Projects</li>
+                  <li><span class="fact-icon">LOC</span>Location: Bengaluru, India</li>
+                </ul>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section scroll-anim zoom-in">
+        <div class="container">
+          <h2 class="section-title reveal">Skills</h2>
+          <div class="skills-grid">
+            <article class="card glass reveal">
+              <h3>Programming Languages</h3>
+              <p class="skill-desc">Core languages I use to build logic, solve problems, and write efficient code.</p>
+              <div class="skill">
+                <span>C</span>
+                <div class="progress"><div class="progress-fill" data-progress="82"></div></div>
+              </div>
+              <div class="skill">
+                <span>C++</span>
+                <div class="progress"><div class="progress-fill" data-progress="80"></div></div>
+              </div>
+              <div class="skill">
+                <span>JavaScript</span>
+                <div class="progress"><div class="progress-fill" data-progress="85"></div></div>
+              </div>
+            </article>
+            <article class="card glass reveal">
+              <h3>Web Development</h3>
+              <p class="skill-desc">Technologies I use to create responsive interfaces and real-time web applications.</p>
+              <div class="skill">
+                <span>HTML</span>
+                <div class="progress"><div class="progress-fill" data-progress="90"></div></div>
+              </div>
+              <div class="skill">
+                <span>CSS</span>
+                <div class="progress"><div class="progress-fill" data-progress="88"></div></div>
+              </div>
+              <div class="skill">
+                <span>Firebase</span>
+                <div class="progress"><div class="progress-fill" data-progress="84"></div></div>
+              </div>
+              <div class="skill">
+                <span>SQL</span>
+                <div class="progress"><div class="progress-fill" data-progress="78"></div></div>
+              </div>
+            </article>
+            <article class="card glass reveal">
+              <h3>Tools</h3>
+              <p class="skill-desc">Development tools that improve collaboration, productivity, and project quality.</p>
+              <div class="skill">
+                <span>GitHub</span>
+                <div class="progress"><div class="progress-fill" data-progress="86"></div></div>
+              </div>
+              <div class="skill">
+                <span>VS Code</span>
+                <div class="progress"><div class="progress-fill" data-progress="92"></div></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section scroll-anim fade-up">
+        <div class="container">
+          <h2 class="section-title reveal">Projects</h2>
+          <p class="section-subtitle reveal">Backend-powered portfolio projects with modern UI interactions.</p>
+          <div id="projects-grid" class="projects-grid"></div>
+        </div>
+      </section>
+
+      <section id="certifications" class="section scroll-anim slide-in">
+        <div class="container">
+          <h2 class="section-title reveal">Certifications</h2>
+          <p class="section-subtitle reveal">
+            I actively participate in technical learning programs and certifications to continuously
+            strengthen my practical and industry-relevant skills.
+          </p>
+          <div class="grid-2">
+            <div class="card glass reveal">DataArt QA Automation School in India</div>
+            <div class="card glass reveal">Infosys Springboard - C Programming</div>
+            <div class="card glass reveal">AI Prompt Engineering Masterclass</div>
+            <div class="card glass reveal">Introduction to Generative AI</div>
+            <div class="card glass reveal">HackNova Participation Certificate</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="leadership" class="section scroll-anim fade-up">
+        <div class="container">
+          <h2 class="section-title reveal">Leadership & Activities</h2>
+          <div class="grid-2">
+            <article class="card glass reveal">
+              <h3>IEEE ICCIST 2025 - Volunteer</h3>
+              <p>Supported event coordination and participant management.</p>
+            </article>
+            <article class="card glass reveal">
+              <h3>Samagra Club Member - Records Team</h3>
+              <p>Maintained department documentation and helped organize technical events.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section scroll-anim fade-up">
+        <div class="container contact-grid">
+          <div class="reveal">
+            <h2 class="section-title">Contact</h2>
+            <p class="muted">
+              I am open to internship opportunities, collaborations, and guidance from recruiters,
+              mentors, and developers. Feel free to connect to discuss how we can build meaningful
+              technology together.
+            </p>
+            <div class="card glass contact-info">
+              <p><strong>Email:</strong> suhanitodkar16@gmail.com</p>
+              <p>
+                <strong>LinkedIn:</strong>
+                <a href="https://linkedin.com/in/suhani-shivaji-todkar-56b754376" target="_blank" rel="noreferrer"
+                  >linkedin.com/in/suhani-shivaji-todkar-56b754376</a
+                >
+              </p>
+            </div>
+          </div>
+          <form id="contact-form" class="card glass reveal">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required />
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+            <p id="form-status" class="form-status"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-wrap">
+        <p>&copy; <span id="year"></span> Suhani Shivaji Todkar. All rights reserved.</p>
+        <div class="socials">
+          <a href="mailto:suhanitodkar16@gmail.com">Email</a>
+          <a href="https://linkedin.com/in/suhani-shivaji-todkar-56b754376" target="_blank" rel="noreferrer"
+            >LinkedIn</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>
