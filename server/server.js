@@ -12,26 +12,53 @@ dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const serveFrontend = process.env.SERVE_FRONTEND === "true";
+
+const allowedOrigins = (process.env.CLIENT_URL || "")
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL ? process.env.CLIENT_URL.split(",") : "*",
+    origin: (origin, callback) => {
+      // Allow server-to-server tools (no origin) and configured frontends.
+      if (!origin || !allowedOrigins.length || allowedOrigins.includes(origin)) {
+        callback(null, true);
+        return;
+      }
+      callback(new Error("CORS: Origin not allowed"));
+    },
   })
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, "../client")));
+if (serveFrontend) {
+  app.use(express.static(path.join(__dirname, "../client")));
+}
 
 app.get("/api/health", (_req, res) => {
-  res.status(200).json({ success: true, message: "Server is running" });
+  res.status(200).json({
+    success: true,
+    message: "Server is running",
+    timestamp: new Date().toISOString(),
+  });
 });
 
 app.use("/api/projects", projectRoutes);
 app.use("/api/contact", contactRoutes);
 
-app.get("*", (_req, res) => {
-  res.sendFile(path.join(__dirname, "../client/index.html"));
+app.get("/", (_req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Portfolio backend is live",
+    docs: {
+      health: "/api/health",
+      projects: "/api/projects",
+      contact: "/api/contact",
+    },
+  });
 });
 
 const seedProjects = async () => {

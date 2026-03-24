@@ -1,27 +1,19 @@
 # Full Stack Portfolio - Suhani Shivaji Todkar
 
-Modern full-stack developer portfolio built with HTML, CSS, JavaScript, Node.js, Express, and MongoDB.
+Modern full-stack developer portfolio with a Vercel-hosted frontend and Render-hosted Node/Express API.
 
-## Tech Stack
+## Stack
 
-- Frontend: HTML5, CSS3, Vanilla JavaScript
-- Backend: Node.js, Express.js
-- Database: MongoDB Atlas + Mongoose
-- Tools: Nodemailer, Dotenv
+- Frontend: HTML, CSS, Vanilla JavaScript
+- Backend: Node.js, Express
+- Database: MongoDB Atlas (Mongoose)
+- Email: Nodemailer
 
-## Features
+## API
 
-- Responsive, modern glassmorphism UI
-- Dark mode toggle
-- Scroll animations and interactive project cards
-- Dynamic project loading from backend API
-- Contact form that stores messages in MongoDB and sends email
-
-## API Endpoints
-
+- `GET /api/health`
 - `GET /api/projects`
 - `POST /api/contact`
-- `GET /api/health`
 
 ## Local Setup
 
@@ -31,25 +23,38 @@ Modern full-stack developer portfolio built with HTML, CSS, JavaScript, Node.js,
 npm install
 ```
 
-2. Configure `.env` with:
+2. Create `.env` from `.env.example` and fill values.
 
-- `MONGO_URI`
-- `CLIENT_URL`
-- `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASS`
-- `OWNER_EMAIL`
-
-3. Run server:
+3. Start server:
 
 ```bash
 npm run dev
 ```
 
-4. Open app:
+## Backend Deployment (Render)
 
-- `http://localhost:5000`
+1. Push this repo to GitHub.
+2. On Render, create a new **Web Service** from the repo.
+3. Use:
+   - Build Command: `npm install`
+   - Start Command: `npm start`
+4. Add environment variables:
+   - `PORT=5000`
+   - `MONGO_URI=<your atlas uri>`
+   - `CLIENT_URL=https://suhani-portfolio-tau.vercel.app`
+   - `SERVE_FRONTEND=false`
+   - `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASS`
+   - `OWNER_EMAIL=suhanitodkar16@gmail.com`
+5. Deploy and verify:
+   - `https://<your-render-service>.onrender.com/api/health`
 
-## Deployment
+## Frontend Deployment (Vercel)
 
-- Frontend: Netlify or Vercel
-- Backend: Render
-- Database: MongoDB Atlas
+- `vercel.json` is included so root deploy serves `client/` correctly.
+- Set API base in `client/index.html`:
+
+```html
+<meta name="api-base" content="https://<your-render-service>.onrender.com" />
+```
+
+Then redeploy Vercel.

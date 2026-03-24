@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: suhani-portfolio-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+    healthCheckPath: /api/health
