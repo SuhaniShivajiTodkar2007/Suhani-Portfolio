@@ -41,13 +41,14 @@ const DEFAULT_PROJECTS = [
   },
 ];
 
-document.getElementById("year").textContent = new Date().getFullYear();
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 const safeApi = (path) => `${API_BASE.replace(/\/$/, "")}${path}`;
 
 const setTheme = (theme) => {
   document.body.classList.toggle("dark", theme === "dark");
-  themeIcon.textContent = theme === "dark" ? "Light" : "Dark";
+  if (themeIcon) themeIcon.textContent = theme === "dark" ? "Light" : "Dark";
   localStorage.setItem("theme", theme);
 };
 
@@ -116,15 +117,19 @@ const startTypingRoles = () => {
   tick();
 };
 
-themeToggle.addEventListener("click", () => {
-  const nextTheme = document.body.classList.contains("dark") ? "light" : "dark";
-  setTheme(nextTheme);
-});
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const nextTheme = document.body.classList.contains("dark") ? "light" : "dark";
+    setTheme(nextTheme);
+  });
+}
 
-menuToggle.addEventListener("click", () => nav.classList.toggle("open"));
+if (menuToggle && nav) {
+  menuToggle.addEventListener("click", () => nav.classList.toggle("open"));
+}
 navLinks.forEach((link) =>
   link.addEventListener("click", () => {
-    nav.classList.remove("open");
+    if (nav) nav.classList.remove("open");
   })
 );
 
@@ -196,6 +201,7 @@ const decorateSkillBars = () => {
 decorateSkillBars();
 
 const updateActiveNav = () => {
+  if (!sections.length) return;
   const scrollY = window.pageYOffset;
   sections.forEach((section) => {
     const top = section.offsetTop - 130;
@@ -319,6 +325,7 @@ const getProjectIconMeta = (title = "") => {
 };
 
 const renderProjects = (projects) => {
+  if (!projectsGrid) return;
   if (!projects.length) {
     projectsGrid.innerHTML = `<article class="card glass">No projects available yet.</article>`;
     return;
@@ -381,32 +388,34 @@ const fetchProjects = async () => {
   }
 };
 
-contactForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  formStatus.textContent = "Sending message...";
-  formStatus.style.color = "var(--muted)";
+if (contactForm && formStatus) {
+  contactForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    formStatus.textContent = "Sending message...";
+    formStatus.style.color = "var(--muted)";
 
-  const formData = new FormData(contactForm);
-  const payload = Object.fromEntries(formData.entries());
+    const formData = new FormData(contactForm);
+    const payload = Object.fromEntries(formData.entries());
 
-  try {
-    const response = await fetch(safeApi("/api/contact"), {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+    try {
+      const response = await fetch(safeApi("/api/contact"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.message || "Unable to send message");
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.message || "Unable to send message");
 
-    formStatus.textContent = "Message sent successfully. Check your email for confirmation.";
-    formStatus.style.color = "var(--accent)";
-    contactForm.reset();
-  } catch (error) {
-    formStatus.textContent = error.message;
-    formStatus.style.color = "#ff6b6b";
-  }
-});
+      formStatus.textContent = "Message sent successfully. Check your email for confirmation.";
+      formStatus.style.color = "var(--accent)";
+      contactForm.reset();
+    } catch (error) {
+      formStatus.textContent = error.message;
+      formStatus.style.color = "#ff6b6b";
+    }
+  });
+}
 
 fetchProjects();
 updateActiveNav();
